@@ -2869,6 +2869,16 @@
                     "items":{
                         "$ref":"#/definitions/Dataset"
                     }
+                },
+                "createdDateTime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Import creation time"
+                },
+                "updatedDateTime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Import last update time"
                 }
             }
         },
@@ -2928,6 +2938,10 @@
                 "defaultRetentionPolicy":{
                     "type":"string",
                     "description":"The dataset default data retention policy"
+                },
+                "addRowsAPIEnabled":{
+                    "type":"boolean",
+                    "description":"Is Push Dataset"
                 },
                 "tables":{
                     "type":"array",
@@ -3275,6 +3289,10 @@
                 "name":{
                     "type":"string",
                     "description":"The report name"
+                },
+                "datasetId": {
+                    "type": "string",
+                    "description": "The dataset id"
                 },
                 "webUrl":{
                     "type":"string",
