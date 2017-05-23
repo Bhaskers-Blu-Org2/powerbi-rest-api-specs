@@ -1157,6 +1157,10 @@
                     "type": "string",
                     "description": "The dataset default data retention policy"
                 },
+                "addRowsAPIEnabled":{
+                    "type":"boolean",
+                    "description":"Is Push Dataset"
+                },
                 "tables": {
                     "type": "array",
                     "description": "The dataset tables",
@@ -1410,6 +1414,10 @@
                 "name": {
                     "type": "string",
                     "description": "The report name"
+                },
+                "datasetId": {
+                    "type": "string",
+                    "description": "The dataset id"
                 },
                 "webUrl": {
                     "type": "string",
