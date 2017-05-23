@@ -3290,10 +3290,6 @@
                     "type":"string",
                     "description":"The report name"
                 },
-                "datasetId": {
-                    "type": "string",
-                    "description": "The dataset id"
-                },
                 "webUrl":{
                     "type":"string",
                     "description":"The report web url"
@@ -3301,6 +3297,10 @@
                 "embedUrl":{
                     "type":"string",
                     "description":"The report embed url"
+                },
+                "datasetId": {
+                    "type": "string",
+                    "description": "The dataset id"
                 }
             }
         },
