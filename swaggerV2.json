@@ -3569,6 +3569,10 @@
                 "datasetId":{
                     "type":"string",
                     "description":"The new dataset of the rebinded report"
+                },
+                "allowSaveAs":{
+                    "type":"boolean",
+                    "description":"Allow SaveAs the report with generated token."
                 }
             }
         },
