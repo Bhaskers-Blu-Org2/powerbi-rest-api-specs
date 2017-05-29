@@ -3534,9 +3534,9 @@
                     "type":"string",
                     "description":"The requested report name"
                 },
-                "targetGroupId":{
+                "targetWorkspaceId":{
                     "type":"string",
-                    "description":"Optional parameter for specifying the target group id"
+                    "description":"Optional parameter for specifying the target workspace id"
                 },
                 "targetModelId":{
                     "type":"string",
