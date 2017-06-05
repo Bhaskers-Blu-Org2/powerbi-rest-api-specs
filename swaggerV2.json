@@ -3576,7 +3576,8 @@
                     "description":"The dataset mode or type",
                     "enum":[
                         "View",
-                        "Edit"
+                        "Edit",
+                        "Create"
                     ],
                     "x-ms-enum": {
                         "name": "TokenAccessLevel",
