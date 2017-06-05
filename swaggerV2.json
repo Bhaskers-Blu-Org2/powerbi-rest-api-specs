@@ -987,7 +987,16 @@
                         "in":"query",
                         "required":false,
                         "description":"Determines what to do if a dataset with the same name already exists",
-                        "type":"string"
+                        "type":"string",
+                        "enum":[
+                            "Ignore",
+                            "Abort",
+                            "Overwrite"
+                        ],
+                        "x-ms-enum": {
+                            "name": "ImportConflictHandlerMode",
+                            "modelAsString": true
+                        }
                     },
                     {
                         "name":"importInfo",
@@ -2970,7 +2979,11 @@
                         "Push",
                         "Streaming",
                         "PushStreaming"
-                    ]
+                    ],
+                    "x-ms-enum": {
+                        "name": "DatasetMode",
+                        "modelAsString": true
+                    }
                 }
             }
         },
@@ -3564,7 +3577,11 @@
                     "enum":[
                         "View",
                         "Edit"
-                    ]
+                    ],
+                    "x-ms-enum": {
+                        "name": "TokenAccessLevel",
+                        "modelAsString": true
+                    }
                 },
                 "datasetId":{
                     "type":"string",
