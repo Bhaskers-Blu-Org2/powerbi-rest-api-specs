@@ -2424,8 +2424,11 @@
         },
         "/v1.0/myorg/groups":{
             "get":{
+                "tags":[
+                    "Groups"
+                ],
                 "summary":"Returns a list of groups",
-                "operationId":"GetGroups",
+                "operationId":"Groups_GetGroups",
                 "consumes":[
 
                 ],
