@@ -2509,8 +2509,9 @@
                 "responses": {
                     "200": {
                         "description": "OK",
-                        "schema": {
-                            "$ref":"#/definitions/ODataResponse[List[GroupUser]]"
+                        "type":"array",
+                        "items":{
+                            "$ref":"#/definitions/GroupUser"
                         }
                     }
                 }
@@ -3743,23 +3744,6 @@
                 "name":{
                     "type":"string",
                     "description":"The name of the new created group."
-                }
-            }
-        },
-        "ODataResponse[List[GroupUser]]":{
-            "type":"object",
-            "description":"A GroupUser odata list wrapper",
-            "properties":{
-                "odata.context":{
-                    "type":"string",
-                    "description":"OData context"
-                },
-                "value":{
-                    "type":"array",
-                    "description":"The datasets",
-                    "items":{
-                        "$ref":"#/definitions/GroupUser"
-                    }
                 }
             }
         },
