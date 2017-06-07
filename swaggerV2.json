@@ -1672,7 +1672,7 @@
                     "application/json"
                 ],
                 "produces":[
-
+                    "application/json"
                 ],
                 "parameters":[
                     {
