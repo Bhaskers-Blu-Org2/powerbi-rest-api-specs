@@ -444,7 +444,7 @@
                 "tags":[
                     "Datasets"
                 ],
-                "operationId":"Datasets_SetAllConnections",
+                "operationId":"Datasets_SetAllDatasetConnections",
                 "summary":"Sets all connections for the specified dataset",
                 "consumes":[
                     "application/json"
@@ -466,20 +466,7 @@
                         "description":"The body",
                         "required":true,
                         "schema":{
-                            "anyOf":[
-                                {
-                                    "type":"object",
-                                    "additionalProperties":{
-                                        "type":"string"
-                                    }
-                                },
-                                {
-                                    "type":"object",
-                                    "additionalProperties":{
-                                        "$ref":"#/definitions/Object"
-                                    }
-                                }
-                            ]
+                            "$ref": "#/definitions/ConnectionDetails"
                         }
                     }
                 ],
@@ -2155,7 +2142,7 @@
                 "tags":[
                     "Datasets"
                 ],
-                "operationId":"Datasets_SetAllConnectionsInGroup",
+                "operationId":"Datasets_SetAllDatasetConnectionsInGroup",
                 "summary":"Sets all connections for the specified dataset",
                 "consumes":[
                     "application/json"
@@ -2184,20 +2171,7 @@
                         "description":"The body",
                         "required":true,
                         "schema":{
-                            "anyOf":[
-                                {
-                                    "type":"object",
-                                    "additionalProperties":{
-                                        "type":"string"
-                                    }
-                                },
-                                {
-                                    "type":"object",
-                                    "additionalProperties":{
-                                        "$ref":"#/definitions/Object"
-                                    }
-                                }
-                            ]
+                            "$ref": "#/definitions/ConnectionDetails"
                         }
                     }
                 ],
@@ -3497,6 +3471,16 @@
                 "gatewayObjectId": {
                     "type": "string",
                     "description": "The gateway id"
+                }
+            }
+        },
+        "ConnectionDetails": {
+            "type": "object",
+            "description": "Connection String wrapper.",
+            "properties": {
+                "connectionString": {
+                    "type": "string",
+                    "description": "A dataset connection string."
                 }
             }
         },
