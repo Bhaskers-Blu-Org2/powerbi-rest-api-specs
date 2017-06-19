@@ -3770,6 +3770,27 @@
                 }
             }
         },
+        "RlsContext":{
+            "type":"object",
+            "description":"The identity that the generated token should reflect",
+            "properties":{
+                "username":{
+                    "type":"string",
+                    "description":"The effective username reflected by a token for applying RLS rules"
+                },
+                "aadToken":{
+                    "type":"string",
+                    "description":"An AAD token representing the effective identity reflected by a token for applying RLS rules"
+                },
+                "roles":{
+                    "type":"array",
+                    "description":"An array of roles reflected by a token when applying RLS rules",
+                    "items":{
+                        "type":"string"
+                    }
+                }
+          }
+        },
         "GenerateTokenRequest":{
             "type":"object",
             "description":"Power BI Generate Token Request",
@@ -3794,6 +3815,10 @@
                 "allowSaveAs":{
                     "type":"boolean",
                     "description":"Allow SaveAs the report with generated token."
+                },
+                "identity":{
+                    "$ref": "#/definitions/RlsContext",
+                    "description": "The identity that the generated token should reflect"
                 }
             }
         },
