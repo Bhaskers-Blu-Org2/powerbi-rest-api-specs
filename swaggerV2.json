@@ -2,7 +2,7 @@
     "swagger":"2.0",
     "info":{
         "version":"v1.0",
-        "title":"Power BI v1.0 API"
+        "title":"Power BI Client"
     },
     "host":"api.powerbi.com",
     "schemes":[
@@ -616,7 +616,9 @@
                 "consumes": [
                     "application/json"
                 ],
-                "produces": [],
+                "produces": [
+                    "application/json"
+				],
                 "parameters": [
                     {
                         "name": "gatewayId",
@@ -639,7 +641,7 @@
                     "201": {
                         "description": "Created",
                         "schema":{
-                            "$ref":"#/definitions/Object"
+                            "$ref": "#/definitions/GatewayDatasource"
                         }
                     }
                 }
