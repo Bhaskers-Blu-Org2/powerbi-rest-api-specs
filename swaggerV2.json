@@ -2,7 +2,7 @@
     "swagger":"2.0",
     "info":{
         "version":"v1.0",
-        "title":"Power BI v1.0 API"
+        "title":"Power BI Client"
     },
     "host":"api.powerbi.com",
     "schemes":[
