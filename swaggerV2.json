@@ -2511,9 +2511,8 @@
                 "responses": {
                     "200": {
                         "description": "OK",
-                        "type":"array",
-                        "items":{
-                            "$ref":"#/definitions/GroupUser"
+                        "schema": {
+                            "$ref":"#/definitions/ODataResponse[List[GroupUserAccessRight]]"
                         }
                     }
                 }
@@ -3428,16 +3427,32 @@
         },
         "ODataResponse[List[UserAccessRight]]": {
             "type": "object",
-            "description": "Odata response wrapper for a Power BI user Access Right List",
+            "description": "Odata response wrapper for a Power BI user Access Right for datasource List",
             "properties": {
                 "odata.context": {
                     "type": "string"
                 },
                 "value": {
                     "type": "array",
-                    "description": "The user Access Right List",
+                    "description": "The user Access Right for datasource List",
                     "items": {
                         "$ref": "#/definitions/UserAccessRight"
+                    }
+                }
+            }
+        },
+		"ODataResponse[List[GroupUserAccessRight]]": {
+            "type": "object",
+            "description": "Odata response wrapper for a Power BI user Access Right for group List",
+            "properties": {
+                "odata.context": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "array",
+                    "description": "The user Access Right for group List",
+                    "items": {
+                        "$ref": "#/definitions/GroupUserAccessRight"
                     }
                 }
             }
@@ -3688,11 +3703,11 @@
         },
         "UserAccessRight": {
             "type": "object",
-            "description": "A Power BI user Access Right entry",
+            "description": "A Power BI user Access Right entry for datasource",
             "properties": {
-                "accessRight": {
+                "datasourceAccessRight": {
                     "type": "string",
-                    "description": "Access rights user has",
+                    "description": "Access rights user has for datasource",
                     "enum":[
                         "None",
                         "Read",
@@ -3702,6 +3717,29 @@
                     ],
                     "x-ms-enum": {
                         "name": "UserAccessRightEnum",
+                        "modelAsString": true
+                    }
+                },
+                "emailAddress": {
+                    "type": "string",
+                    "description": "Email address of the user."
+                }
+            }
+        },
+		"GroupUserAccessRight": {
+            "type": "object",
+            "description": "A Power BI user Access Right entry for group",
+            "properties": {
+                "groupUserAccessRight": {
+                    "type": "string",
+                    "description": "Access rights user has for group",
+                    "enum":[
+                        "None",
+                        "Member",
+                        "Admin"
+                    ],
+                    "x-ms-enum": {
+                        "name": "GroupUserAccessRightEnum",
                         "modelAsString": true
                     }
                 },
