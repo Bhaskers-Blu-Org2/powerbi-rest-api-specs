@@ -2422,6 +2422,177 @@
                         }
                     }
                 }
+            },
+            "post":{
+                "tags":[
+                    "Groups"
+                ],
+                "summary":"Create new group",
+                "operationId":"Groups_CreateGroup",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"requestParameters",
+                        "description":"Create group request parameters",
+                        "in":"body",
+                        "required":true,
+                        "schema":{
+                            "$ref":"#/definitions/GroupCreationRequest"
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/Group"
+                        }
+                    }
+                },
+                "deprecated":false
+            }
+        },
+        "/v1.0/myorg/groups/{groupId}":{
+            "delete":{
+                "tags":[
+                    "Groups"
+                ],
+                "summary":"Deletes the specified group",
+                "operationId":"Groups_DeleteGroup",
+                "consumes":[
+                ],
+                "produces":[
+                ],
+                "parameters":[
+                    {
+                        "name":"groupId",
+                        "in":"path",
+                        "required":true,
+                        "description":"The group id to delete",
+                        "type":"string"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/Object"
+                        }
+                    }
+                },
+                "deprecated":false
+            }
+        },
+        "/v1.0/myorg/groups/{groupId}/users": {
+            "get": {
+                "tags": [
+                    "Groups"
+                ],
+                "operationId": "Groups_GetGroupUsers",
+                "summary": "Get a group users list",
+                "consumes": [ ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "groupId",
+                        "in": "path",
+                        "description": "The group id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref":"#/definitions/ODataResponse[List[GroupUserAccessRight]]"
+                        }
+                    }
+                }
+            },
+            "post":{
+                "tags":[
+                    "Groups"
+                ],
+                "operationId":"Groups_AddGroupUser",
+                "summary":"Add a group user",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                ],
+                "parameters":[
+                    {
+                        "name": "groupId",
+                        "in": "path",
+                        "description": "The group id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "userDetails",
+                        "in": "body",
+                        "description": "user access right details",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/GroupUserAccessRight"
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/Object"
+                        }
+                    }
+                },
+                "deprecated":false
+            }
+        },
+        "/v1.0/myorg/groups/{groupId}/users/{user}":{
+            "delete":{
+                "tags":[
+                    "Groups"
+                ],
+                "summary":"Deletes the specified group",
+                "operationId":"Groups_DeleteUserInGroup",
+                "consumes":[
+                ],
+                "produces":[
+                ],
+                "parameters":[
+                    {
+                        "name":"groupId",
+                        "in":"path",
+                        "required":true,
+                        "description":"The group id",
+                        "type":"string"
+                    },
+                    {
+                        "name":"user",
+                        "in":"path",
+                        "required":true,
+                        "description":"The user email to delete",
+                        "type":"string"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/Object"
+                        }
+                    }
+                },
+                "deprecated":false
             }
         },
         "/v1.0/myorg/groups/{groupId}/reports":{
@@ -3256,16 +3427,32 @@
         },
         "ODataResponse[List[UserAccessRight]]": {
             "type": "object",
-            "description": "Odata response wrapper for a Power BI user Access Right List",
+            "description": "Odata response wrapper for a Power BI user Access Right for datasource List",
             "properties": {
                 "odata.context": {
                     "type": "string"
                 },
                 "value": {
                     "type": "array",
-                    "description": "The user Access Right List",
+                    "description": "The user Access Right for datasource List",
                     "items": {
                         "$ref": "#/definitions/UserAccessRight"
+                    }
+                }
+            }
+        },
+		"ODataResponse[List[GroupUserAccessRight]]": {
+            "type": "object",
+            "description": "Odata response wrapper for a Power BI user Access Right for group List",
+            "properties": {
+                "odata.context": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "array",
+                    "description": "The user Access Right for group List",
+                    "items": {
+                        "$ref": "#/definitions/GroupUserAccessRight"
                     }
                 }
             }
@@ -3516,15 +3703,49 @@
         },
         "UserAccessRight": {
             "type": "object",
-            "description": "A Power BI user Access Right entry",
+            "description": "A Power BI user Access Right entry for datasource",
             "properties": {
-                "accessRight": {
+                "datasourceAccessRight": {
                     "type": "string",
-                    "description": ""
+                    "description": "Access rights user has for datasource",
+                    "enum":[
+                        "None",
+                        "Read",
+                        "Write",
+                        "Admin",
+                        "ReadWrite"
+                    ],
+                    "x-ms-enum": {
+                        "name": "UserAccessRightEnum",
+                        "modelAsString": true
+                    }
                 },
                 "emailAddress": {
                     "type": "string",
-                    "description": ""
+                    "description": "Email address of the user."
+                }
+            }
+        },
+		"GroupUserAccessRight": {
+            "type": "object",
+            "description": "A Power BI user Access Right entry for group",
+            "properties": {
+                "groupUserAccessRight": {
+                    "type": "string",
+                    "description": "Access rights user has for group",
+                    "enum":[
+                        "None",
+                        "Member",
+                        "Admin"
+                    ],
+                    "x-ms-enum": {
+                        "name": "GroupUserAccessRightEnum",
+                        "modelAsString": true
+                    }
+                },
+                "emailAddress": {
+                    "type": "string",
+                    "description": "Email address of the user."
                 }
             }
         },
@@ -3553,6 +3774,39 @@
                 "datasetId":{
                     "type":"string",
                     "description":"The new dataset of the rebinded report"
+                }
+            }
+        },
+        "GroupCreationRequest":{
+            "type":"object",
+            "description":"Power BI Create a new group Request",
+            "properties":{
+                "name":{
+                    "type":"string",
+                    "description":"The name of the new created group."
+                }
+            }
+        },
+        "GroupUser": {
+            "type": "object",
+            "description": "A Power BI user details in a group",
+            "properties": {
+                "userType": {
+                    "type": "string",
+                    "description": "Type of user in a group.",
+                    "enum":[
+                        "None",
+                        "Member",
+                        "Admin"
+                    ],
+                    "x-ms-enum": {
+                        "name": "MemberAdminAccessRight",
+                        "modelAsString": true
+                    }
+                },
+                "emailAddress": {
+                    "type": "string",
+                    "description": "Email address of the user."
                 }
             }
         },
