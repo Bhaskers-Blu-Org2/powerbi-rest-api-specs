@@ -3818,13 +3818,20 @@
                     "type":"string",
                     "description":"The effective username reflected by a token for applying RLS rules"
                 },
-                "aadToken":{
-                    "type":"string",
-                    "description":"An AAD token representing the effective identity reflected by a token for applying RLS rules"
+                "useAADIdentity":{
+                    "type":"boolean",
+                    "description":"Use the AAD token defined on the GenerateTokenRequest object"
                 },
                 "roles":{
                     "type":"array",
                     "description":"An array of roles reflected by a token when applying RLS rules",
+                    "items":{
+                        "type":"string"
+                    }
+                },
+                "datasets":{
+                    "type":"array",
+                    "description":"An array of datasets for which this mapping applies to, if not provided - applies to all datasets",
                     "items":{
                         "type":"string"
                     }
@@ -3856,9 +3863,14 @@
                     "type":"boolean",
                     "description":"Allow SaveAs the report with generated token."
                 },
-                "identity":{
-                    "$ref": "#/definitions/RlsContext",
-                    "description": "The identity that the generated token should reflect"
+                "aadIdentity":{
+                    "type":"string",
+                    "description":"An AAD token representing the effective identity reflected by a token for applying RLS rules"
+                },
+                "identities":{
+                    "type":"array",
+                    "description": "The effective identities to use for RLS rules",
+                    "$ref": "#/definitions/RlsContext"
                 }
             }
         },
