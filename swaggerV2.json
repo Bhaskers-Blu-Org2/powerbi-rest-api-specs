@@ -3874,7 +3874,9 @@
                 "identities":{
                     "type":"array",
                     "description": "The effective identities to use for RLS rules",
-                    "$ref": "#/definitions/RlsContext"
+                    "items":{
+                        "$ref": "#/definitions/RlsContext"
+                    }
                 }
             }
         },
