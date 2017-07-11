@@ -3094,6 +3094,10 @@
                     "type":"string",
                     "description":"The dataset name"
                 },
+                "configuredBy":{
+                    "type":"string",
+                    "description":"The dataset owner"
+                },
                 "defaultRetentionPolicy":{
                     "type":"string",
                     "description":"The dataset default data retention policy"
