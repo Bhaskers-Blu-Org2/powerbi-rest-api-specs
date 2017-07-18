@@ -618,7 +618,7 @@
                 ],
                 "produces": [
                     "application/json"
-				],
+                ],
                 "parameters": [
                     {
                         "name": "gatewayId",
@@ -3445,7 +3445,7 @@
                 }
             }
         },
-		"ODataResponse[List[GroupUserAccessRight]]": {
+        "ODataResponse[List[GroupUserAccessRight]]": {
             "type": "object",
             "description": "Odata response wrapper for a Power BI user Access Right for group List",
             "properties": {
@@ -3730,7 +3730,7 @@
                 }
             }
         },
-		"GroupUserAccessRight": {
+        "GroupUserAccessRight": {
             "type": "object",
             "description": "A Power BI user Access Right entry for group",
             "properties": {
@@ -3814,7 +3814,11 @@
                 }
             }
         },
-        "RlsContext":{
+        "EffectiveIdentity":{
+        "required":[
+                "username",
+                "datasets"
+            ],
             "type":"object",
             "description":"The identity that the generated token should reflect",
             "properties":{
@@ -3867,7 +3871,7 @@
                     "type":"array",
                     "description": "The effective identities to use for RLS rules",
                     "items":{
-                        "$ref": "#/definitions/RlsContext"
+                        "$ref": "#/definitions/EffectiveIdentity"
                     }
                 }
             }
