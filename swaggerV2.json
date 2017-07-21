@@ -3099,61 +3099,73 @@
             ],
             "type":"object",
             "description":"A Power BI Dataset",
-            "properties":{
-                "id":{
-                    "type":"string",
-                    "description":"The dataset id"
-                },
-                "name":{
-                    "type":"string",
-                    "description":"The dataset name"
-                },
-                "configuredBy":{
-                    "type":"string",
-                    "description":"The dataset owner"
-                },
-                "defaultRetentionPolicy":{
-                    "type":"string",
-                    "description":"The dataset default data retention policy"
-                },
-                "addRowsAPIEnabled":{
-                    "type":"boolean",
-                    "description":"Is Push Dataset"
-                },
-                "tables":{
-                    "type":"array",
-                    "description":"The dataset tables",
-                    "items":{
-                        "$ref":"#/definitions/Table"
-                    }
-                },
-                "webUrl":{
-                    "type":"string",
-                    "description":"The dataset web url"
-                },
-                "datasources":{
-                    "type":"array",
-                    "description":"The datasources associated with this dataset",
-                    "items":{
-                        "$ref":"#/definitions/Datasource"
-                    }
-                },
-                "defaultMode":{
-                    "type":"string",
-                    "description":"The dataset mode or type",
-                    "enum":[
-                        "AsAzure",
-                        "AsOnPrem",
-                        "Push",
-                        "Streaming",
-                        "PushStreaming"
-                    ],
-                    "x-ms-enum": {
-                        "name": "DatasetMode",
-                        "modelAsString": true
-                    }
-                }
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "The dataset id"
+            },
+            "name": {
+              "type": "string",
+              "description": "The dataset name"
+            },
+            "configuredBy": {
+              "type": "string",
+              "description": "The dataset owner"
+            },
+            "defaultRetentionPolicy": {
+              "type": "string",
+              "description": "The dataset default data retention policy"
+            },
+            "addRowsAPIEnabled": {
+              "type": "boolean",
+              "description": "Is Push Dataset"
+            },
+            "tables": {
+              "type": "array",
+              "description": "The dataset tables",
+              "items": {
+                "$ref": "#/definitions/Table"
+              }
+            },
+            "webUrl": {
+              "type": "string",
+              "description": "The dataset web url"
+            },
+            "datasources": {
+              "type": "array",
+              "description": "The datasources associated with this dataset",
+              "items": {
+                "$ref": "#/definitions/Datasource"
+              }
+            },
+            "defaultMode": {
+              "type": "string",
+              "description": "The dataset mode or type",
+              "enum": [
+                "AsAzure",
+                "AsOnPrem",
+                "Push",
+                "Streaming",
+                "PushStreaming"
+              ],
+              "x-ms-enum": {
+                "name": "DatasetMode",
+                "modelAsString": true
+              }
+            },
+            "IsRefreshable": {
+              "type": "boolean",
+              "description": "Can this dataset be refreshed"
+            },
+            "IsEffectiveIdentityRequired": {
+              "type": "boolean",
+              "description": "Dataset requires effective identity"
+            },
+            "IsEffectiveIdentityRolesRequired": {
+              "type": "boolean",
+              "description": "Dataset requires roles"
             }
+          }
         },
         "Table":{
             "required":[
