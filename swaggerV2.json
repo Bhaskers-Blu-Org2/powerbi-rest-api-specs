@@ -332,6 +332,13 @@
                         "in":"path",
                         "required":true,
                         "type":"string"
+                    },
+                    {
+                        "name":"$top",
+                        "description":"The requested number of entries in the refresh history, if not supported the default is all available entries",
+                        "in":"query",
+                        "required":false,
+                        "type":"integer"
                     }
                 ],
                 "responses":{
@@ -2011,6 +2018,13 @@
                         "in":"path",
                         "required":true,
                         "type":"string"
+                    },
+                    {
+                        "name":"$top",
+                        "description":"The requested number of entries in the refresh history, if not supported the default is all available entries",
+                        "in":"query",
+                        "required":false,
+                        "type":"integer"
                     }
                 ],
                 "responses":{
