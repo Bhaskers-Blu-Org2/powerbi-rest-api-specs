@@ -3237,6 +3237,10 @@
             "IsEffectiveIdentityRolesRequired": {
               "type": "boolean",
               "description": "Dataset requires roles"
+            },
+            "IsOnPremGatewayRequired": {
+              "type": "boolean",
+              "description": "Dataset requires onprem gateway"
             }
           }
         },
