@@ -3102,7 +3102,7 @@
                 "tags":[
                     "Datasets"
                 ],
-                "summary":"Generate token to view or edit the specified dataset",
+                "summary":"Generate token to view the specified dataset",
                 "operationId":"Datasets_GenerateTokenInGroup",
                 "consumes":[
                     "application/json"
