@@ -3097,6 +3097,55 @@
                 "deprecated":false
             }
         },
+        "/v1.0/myorg/groups/{groupId}/datasets/{datasetKey}/GenerateToken":{
+            "post":{
+                "tags":[
+                    "Datasets"
+                ],
+                "summary":"Generate token to view or edit the specified dataset",
+                "operationId":"Datasets_GenerateTokenInGroup",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"groupId",
+                        "in":"path",
+                        "required":true,
+                        "description":"The group id",
+                        "type":"string"
+                    },
+                    {
+                        "name":"datasetKey",
+                        "description":"The dataset id",
+                        "in":"path",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"requestParameters",
+                        "description":"Generate token parameters",
+                        "in":"body",
+                        "required":true,
+                        "schema":{
+                            "$ref":"#/definitions/GenerateTokenRequest"
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/EmbedToken"
+                        }
+                    }
+                },
+                "deprecated":false
+            }
+        },
         "/v1.0/myorg/groups/{groupId}/dashboards/{dashboardKey}/GenerateToken":{
             "post":{
                 "tags":[
