@@ -1131,6 +1131,39 @@
                     }
                 },
                 "deprecated":false
+            },
+            "post":{
+                "tags":[
+                    "Dashboards"
+                ],
+                "summary":"Add a new empty dashboard",
+                "operationId":"Dashboards_AddDashboard",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+              "parameters": [
+                {
+                  "name": "requestParameters",
+                  "description": "Add dashboard parameters",
+                  "in": "body",
+                  "required": true,
+                  "schema": {
+                    "$ref": "#/definitions/AddDashboardRequest"
+                  }
+                }
+              ],
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/Dashboard"
+                        }
+                    }
+                },
+                "deprecated":false
             }
         },
         "/v1.0/myorg/groups/{groupId}/dashboards":{
@@ -1160,6 +1193,46 @@
                         "description":"OK",
                         "schema":{
                             "$ref":"#/definitions/ODataResponse[List[Dashboard]]"
+                        }
+                    }
+                },
+                "deprecated":false
+            },
+            "post":{
+                "tags":[
+                    "Dashboards"
+                ],
+                "summary":"Add a new empty dashboard",
+                "operationId":"Dashboards_AddDashboardInGroup",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+              "parameters": [
+                  {
+                    "name":"groupId",
+                    "in":"path",
+                    "required":true,
+                    "description":"The group id",
+                    "type":"string"
+                  },
+                  {
+                    "name": "requestParameters",
+                    "description": "Add dashboard parameters",
+                    "in": "body",
+                    "required": true,
+                    "schema": {
+                      "$ref": "#/definitions/AddDashboardRequest"
+                    }
+                  }
+              ],
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/Dashboard"
                         }
                     }
                 },
@@ -1312,6 +1385,55 @@
                 "deprecated":false
             }
         },
+        "/v1.0/myorg/dashboards/{dashboardKey}/tiles/{tileKey}/Clone": {
+        "post": {
+          "tags": [
+            "Tiles"
+          ],
+          "summary": "Clones the specified tile",
+          "operationId": "Dashboards_CloneTile",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "dashboardKey",
+              "description": "The dashboard id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "tileKey",
+              "description": "The tile id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "requestParameters",
+              "description": "Clone tile parameters",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/CloneTileRequest"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Tile"
+              }
+            }
+          },
+          "deprecated": false
+        }
+      },
         "/v1.0/myorg/groups/{groupId}/dashboards/{dashboardKey}/tiles/{tileKey}":{
             "get":{
                 "tags":[
@@ -1346,6 +1468,62 @@
                         "in":"path",
                         "required":true,
                         "type":"string"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/Tile"
+                        }
+                    }
+                },
+                "deprecated":false
+            }
+        },
+        "/v1.0/myorg/groups/{groupId}/dashboards/{dashboardKey}/tiles/{tileKey}/Clone":{
+            "post":{
+                "tags":[
+                    "Tiles"
+                ],
+                "summary":"Clones the specified tile",
+                "operationId":"Dashboards_CloneTileInGroup",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                      "name":"groupId",
+                      "in":"path",
+                      "required":true,
+                      "description":"The group id",
+                      "type":"string"
+                    },  
+                    {
+                      "name": "dashboardKey",
+                      "description": "The dashboard id",
+                      "in": "path",
+                      "required": true,
+                      "type": "string"
+                    },
+                    {
+                        "name":"tileKey",
+                        "description":"The tile id",
+                        "in":"path",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"requestParameters",
+                        "description":"Clone tile parameters",
+                        "in":"body",
+                        "required":true,
+                        "schema":{
+                            "$ref":"#/definitions/CloneTileRequest"
+                        }
                     }
                 ],
                 "responses":{
@@ -1667,6 +1845,37 @@
                         "schema":{
                             "$ref":"#/definitions/Object"
                         }
+                    }
+                },
+                "deprecated":false
+            }
+        },
+        "/v1.0/myorg/reports/{reportKey}/Export":{
+            "get":{
+                "tags":[
+                    "Reports"
+                ],
+                "summary":"Exports the specified report",
+                "operationId":"Reports_ExportReport",
+                "consumes":[],
+                "produces":[
+                    "application/zip"
+                ],
+                "parameters":[
+                    {
+                        "name":"reportKey",
+                        "in":"path",
+                        "description":"The report id",
+                        "required":true,
+                        "type":"string"
+                    }
+                ],
+                "responses":{
+                    "200": {
+                        "schema": {
+                            "type": "file"
+                        },
+                        "description": "Exported File"
                     }
                 },
                 "deprecated":false
@@ -3083,6 +3292,44 @@
                 },
                 "deprecated":false
             }
+        },
+        "/v1.0/myorg/groups/{groupId}/reports/{reportKey}/Export":{
+            "get":{
+                "tags":[
+                    "Reports"
+                ],
+                "summary":"Exports the specified report",
+                "operationId":"Reports_ExportReportInGroup",
+                "consumes":[],
+                "produces":[
+                    "application/zip"
+                ],
+                "parameters":[
+                    {
+                        "name":"groupId",
+                        "in":"path",
+                        "required":true,
+                        "description":"The group id",
+                        "type":"string"
+                    },
+                    {
+                        "name":"reportKey",
+                        "in":"path",
+                        "required":true,
+                        "description":"The report id",
+                        "type":"string"
+                    }
+                ],
+                "responses":{
+                    "200": {
+                        "schema": {
+                            "type": "file"
+                        },
+                        "description": "Exported File"
+                    }
+                },
+                "deprecated":false
+            }
         }
     },
     "definitions":{
@@ -3639,6 +3886,14 @@
                 "embedData":{
                     "type":"string",
                     "description":"The tile embed data"
+                },
+                "reportId":{
+                    "type":"string",
+                    "description":"The report id"
+                },
+                "datasetId":{
+                    "type":"string",
+                    "description":"The dataset id"
                 }
             }
         },
@@ -3997,6 +4252,42 @@
                     "description":"Expiration time of token - in UTC."
                 }
             }
+        },
+        "CloneTileRequest":{
+          "type":"object",
+          "description":"Power BI Clone Tile Request",
+          "properties":{
+            "targetDashboardId":{
+              "type":"string",
+              "description":"The target dashboard id"
+            },
+            "targetWorkspaceId": {
+              "type": "string",
+              "description": "Optional parameter for specifying the target workspace id"
+            },
+            "targetReportId":{
+              "type":"string",
+              "description":"Optional parameter for specifying the target report id"
+            },
+            "targetModelId": {
+              "type": "string",
+              "description": "Optional parameter for specifying the target associated model (dataset) id"
+            },
+            "positionConflictAction":{
+              "type":"string",
+              "description":"Optional parameter for specifying the action in case of position conflict"
+            }
+          }
+        },
+        "AddDashboardRequest":{
+          "type":"object",
+          "description":"Power BI Add Dashboard Request",
+          "properties":{
+            "name":{
+              "type":"string",
+              "description":"The name of the new dashboard"
+            }
+          }
         }
     },
     "parameters":{
