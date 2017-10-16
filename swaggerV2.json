@@ -414,39 +414,6 @@
                 "deprecated":false
             }
         },
-        "/v1.0/myorg/datasets/{datasetKey}/Default.GetBoundedDatasources":{
-            "get":{
-                "tags":[
-                    "Datasets"
-                ],
-                "operationId":"Datasets_GetBoundedDatasources",
-                "summary":"Gets a list of bound datasources for the specified dataset",
-                "consumes":[
-
-                ],
-                "produces":[
-                    "application/json"
-                ],
-                "parameters":[
-                    {
-                        "name":"datasetKey",
-                        "description":"The dataset id",
-                        "in":"path",
-                        "required":true,
-                        "type":"string"
-                    }
-                ],
-                "responses":{
-                    "200":{
-                        "description":"OK",
-                        "schema":{
-                            "$ref":"#/definitions/ODataResponse[List[GatewayDatasource]]"
-                        }
-                    }
-                },
-                "deprecated":false
-            }
-        },
         "/v1.0/myorg/datasets/{datasetKey}/datasources":{
             "get":{
                 "tags":[
