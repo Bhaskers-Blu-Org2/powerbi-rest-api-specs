@@ -2323,46 +2323,6 @@
                 "deprecated":false
             }
         },
-        "/v1.0/myorg/groups/{groupId}/datasets/{datasetKey}/Default.GetBoundedDatasources":{
-            "get":{
-                "tags":[
-                    "Datasets"
-                ],
-                "operationId":"Datasets_GetBoundedDatasourcesInGroup",
-                "summary":"Gets a list of bounded datasources for the specified dataset in this group",
-                "consumes":[
-
-                ],
-                "produces":[
-                    "application/json"
-                ],
-                "parameters":[
-                    {
-                        "name":"groupId",
-                        "in":"path",
-                        "required":true,
-                        "description":"The group id",
-                        "type":"string"
-                    },
-                    {
-                        "name":"datasetKey",
-                        "description":"The dataset id",
-                        "in":"path",
-                        "required":true,
-                        "type":"string"
-                    }
-                ],
-                "responses":{
-                    "200":{
-                        "description":"OK",
-                        "schema":{
-                            "$ref":"#/definitions/ODataResponse[List[GatewayDatasource]]"
-                        }
-                    }
-                },
-                "deprecated":false
-            }
-        },
         "/v1.0/myorg/groups/{groupId}/datasets/{datasetKey}/datasources":{
             "get":{
                 "tags":[
